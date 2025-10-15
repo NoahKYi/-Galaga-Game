@@ -1,6 +1,7 @@
 import pygame
 
 class Ship():
+#This file is for controlling movement/interaction
 #Pygame treats things like rectangles
 #x,y coordinates & Origin are the top left of the rectangle
     def __init__(self, ai_settings, screen):
@@ -32,7 +33,7 @@ class Ship():
         #Update rect object from the ship's center
 
     def blitme(self):
-        #Draws ship at its location
+        #Draws ship at its location/screen
         self.screen.blit(self.image, self.rect)
 
 
