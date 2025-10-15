@@ -20,13 +20,30 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
-        new_bullet = Bullet(ai_settings, screen, ship)
-        bullets.add(new_bullet)
+        fire_bullets(ai_settings, screen, ship, bullets)
+
 def check_keyup_events(event,ship):
     if event.key == pygame.K_RIGHT:
         ship.moving_right = False
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
+
+def update_bullets(bullets):
+    bullets.update()
+    # Getting rid of old bullets
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+    print(len(bullets))
+
+def fire_bullets(ai_settings, screen, ship, bullets):
+    if len(bullets) < ai_settings.bullets_allowed:
+        new_bullet = Bullet(ai_settings, screen, ship)
+        bullets.add(new_bullet)
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+    print(len(bullets))
 
 #This is for updating the class
 def update_screen(ai_settings, screen, ship, bullets):

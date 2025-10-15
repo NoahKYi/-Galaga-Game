@@ -9,7 +9,6 @@ from pygame.sprite import Group
 "Most important file, connects everything together"
 
 
-
 def run_game():
     x = True
     pygame.init()
@@ -30,14 +29,7 @@ def run_game():
         #Keeps Game functioning
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
-        bullets.update()
-
-        #Getting rid of old bullets
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-        print(len(bullets))
-
+        gf.update_bullets(bullets)
         gf.update_screen(ai_settings, screen, ship, bullets)
         screen.fill(ai_settings.bg_color)
         # Backround color (This is very interesting. The different numbers combine to form a singular color)
@@ -45,5 +37,7 @@ def run_game():
 
         ship.blitme()
         pygame.display.flip()
+
+
 
 run_game()
