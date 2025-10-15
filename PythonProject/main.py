@@ -2,6 +2,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
+from alien import Alien
 import game_functions as gf
 from pygame.sprite import Group
 #Importing Settings
@@ -23,14 +24,14 @@ def run_game():
 
     ship = Ship(ai_settings, screen)
     bullets = Group()
-
+    alien = Alien(ai_settings, screen)
 
     while (True):
         #Keeps Game functioning
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        gf.update_screen(ai_settings, screen, ship, alien, bullets)
         screen.fill(ai_settings.bg_color)
         # Backround color (This is very interesting. The different numbers combine to form a singular color)
         #Gives Screen Color
