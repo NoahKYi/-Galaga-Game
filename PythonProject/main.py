@@ -9,7 +9,6 @@ from pygame.sprite import Group
 
 "Most important file, connects everything together"
 
-
 def run_game():
     x = True
     pygame.init()
@@ -37,8 +36,7 @@ def run_game():
         #Gives Screen Color
 
         ship.blitme()
+        alien.blitme()
         pygame.display.flip()
-
-
 
 run_game()

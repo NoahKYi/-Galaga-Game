@@ -5,11 +5,12 @@ class Alien(Sprite):
 
     def __init__(self, ai_settings, screen):
         super(Alien, self).__init__()
+        self.image = pygame.image.load("MillF.bmp")
         self.screen = screen
         self.ai_settings = ai_settings
 
         #Load the alien
-        self.image = pygame.image.load("MillF.bmp")
+
         self.rect = self.image.get_rect()
 
         self.rect.x = self.rect.width
